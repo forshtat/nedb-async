@@ -5,14 +5,14 @@ export class AsyncNedb<G> extends Nedb<G> {
   constructor(pathOrOptions?: string | Nedb.DataStoreOptions | undefined) {
     super(pathOrOptions);
   }
-  public asyncFind<T extends G>(query: any, projection?: T) {
+  public asyncFind<T extends G>(query: any, projection?: G) {
     return promisefy.call(this, 'find', arguments) as Promise<T[]>;
   }
   public asyncCount(query: any) {
     return promisefy.call(this, 'count', arguments);
   }
 
-  public asyncFindOne<T extends G>(query: any, projection?: T) {
+  public asyncFindOne<T extends G>(query: any, projection?: G) {
     return promisefy.call(this, 'findOne', arguments) as Promise<T>;
   }
 
